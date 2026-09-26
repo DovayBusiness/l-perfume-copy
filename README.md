@@ -17,14 +17,14 @@ A stylish, luxury perfume e-commerce website with WhatsApp ordering. Built for a
 - Premium footer
 
 **Admin Dashboard (`/admin.html`):**
-- Secure login: `admin@essenceluxe.ng / Essence2025`
+- Secure login via Supabase Auth (email/password, restricted to the authorized admin account)
 - Overview: total products, visible, featured, best sellers
 - Product Management: Add/Edit/Delete/Duplicate, image upload, all fields (notes, longevity, occasion, stock, featured, best seller)
 - Homepage Management: hero, promo banner, about, store name
 - Review Management: add/edit/hide/delete
 - Contact Settings: WhatsApp number (wa.me), phone, email, Instagram, address, hours
 - Image Library
-- All changes update public site instantly via localStorage
+- Changes save to Supabase and sync to the public site (localStorage is used only as a local cache)
 
 **WhatsApp Ordering:**
 When customer clicks "Order on WhatsApp", a modal collects quantity, name, phone, delivery location and opens:
@@ -35,8 +35,8 @@ https://wa.me/2348012345678?text=Hello, I would like to order: Product: [...] Br
 ### Tech Stack
 - HTML5, CSS3, Vanilla JavaScript (ES6+)
 - Tailwind CSS via CDN
-- localStorage as database (easy to swap for Firebase/Supabase)
-- No backend, no payment integration (as requested)
+- Supabase (Postgres + Auth) as the backend, with localStorage used only as a local cache
+- No payment integration (as requested)
 
 ### Colors & Design
 - Black #0A0A0A, Cream #FDFBF7, Beige #E8DDD0, Gold #C9A86A
@@ -51,12 +51,6 @@ python3 -m http.server 8000
 # Admin at http://localhost:8000/admin.html
 ```
 
-### Admin Credentials (Demo)
-```
-Email: admin@essenceluxe.ng
-Password: Essence2025
-```
-
 ### Deploy to GitHub Pages (Free Hosting)
 1. Push to GitHub (see below)
 2. Go to repo Settings > Pages
@@ -64,7 +58,6 @@ Password: Essence2025
 4. Save — your site will be live at `https://yourusername.github.io/repo-name/`
 
 ### Future Expansion
-- Replace localStorage with real database
 - Add cloud image storage (Cloudinary/S3)
 - Add inventory tracking, analytics
 
